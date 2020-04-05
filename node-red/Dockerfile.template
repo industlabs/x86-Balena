@@ -1,15 +1,36 @@
-###
-# Build step
+# Runtime image
 ###
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:12-stretch-build as build
 
 RUN JOBS=MAX npm install -g --production --unsafe-perm \
        node-red \
        node-red-admin \
+       npm install node-red-contrib-modbus \
+       npm install node-red-dashboard \
+       npm install node-red-contrib-mssql-plus \
+       npm install node-red-contrib-smb \
+       npm install node-red-node-serialport \
+       npm install node-red-vis \
+       npm install npm-install-missing \
+       npm install node-red-contrib-json-db \
+       npm install node-red-node-email \ 
+       npm install node-red-contrib-counter \
+       npm install node-red-contrib-bigtimer \
+       npm install node-red-contrib-bigexec \
+       npm install node-red-contrib-boolean-logic-ultimate \
+       npm install node-red-contrib-config \
+       npm install node-red-contrib-os \
+       npm install node-red-node-rbe \
+       npm install node-red-node-tail \
        node-red-contrib-balena
+       
+### -------------------- Install  missing node dependencies ----------
+      
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:12-stretch-run
 
-###
-# Runtime image
+RUN JOBS=MAX npm-install-missing \
+       node-red-vis 
+
 ###
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:12-stretch-run
 
@@ -18,7 +39,9 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
   python-dev \
   python-rpi.gpio \
   libatomic1 \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
+  build-essential wget \
+  libical-dev libdbus-1-dev libglib2.0-dev libreadline-dev libudev-dev systemd
+
 
 # Defines our working directory in container
 WORKDIR /usr/src/app
@@ -26,6 +49,7 @@ WORKDIR /usr/src/app
 # Copy over the files created in the previous step, including lib/, bin/
 COPY --from=build /usr/local/bin /usr/local/bin
 COPY --from=build /usr/local/lib/node_modules /usr/local/lib/node_modules
+#COPY --from=build /usr/lib/node_modules/node-red-node-serialport /usr/lib/node_modules_tmp
 
 # This will copy all files in our root to the working  directory in the container
 COPY ./app ./
