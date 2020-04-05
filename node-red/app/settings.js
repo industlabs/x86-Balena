@@ -48,7 +48,7 @@ module.exports = {
     debugMaxLength: 1000,
 
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
-    //flowFile: 'flows.json',
+    flowFile: 'flows.json',
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
@@ -189,11 +189,11 @@ module.exports = {
     //paletteCategories: ['subflows', 'input', 'output', 'function', 'social', 'mobile', 'storage', 'analysis', 'advanced'],
     editorTheme: {
         page: {
-            title: "balena Node-RED",
+            title: "IndustLabs Node-RED",
             favicon: "/usr/src/app/assets/favicon.ico"
         },
         header: {
-            title: "balena Node-RED",
+            title: "IndustLabs Node-RED",
             image: "/usr/src/app/assets/logo.png", // or null to remove image
             url: "https://balena.io"
         },
