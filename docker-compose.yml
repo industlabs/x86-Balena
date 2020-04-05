@@ -19,7 +19,7 @@ services:
       - "/dev/i2c-1:/dev/i2c-1"
     ports:
       - 80:80
- wifi-connect:
+  wifi-connect:
     build: ./wifi-connect
     restart: always
     network_mode: host
