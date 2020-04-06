@@ -8,7 +8,7 @@ cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 cp -r /usr/src/app/vis/ /data/node-red/user/
 
 #mkdir -p /data/node-red/user/JsonDB || true
-cp -r /usr/src/app/JsonDB/ /data/node-red/user/
+##cp -r /usr/src/app/JsonDB/ /data/node-red/user/
 
 
 # Start app
