@@ -33,9 +33,9 @@ services:
     privileged: true
     ports:
       - 8080:8080
-  usbserver:
+  rpi-virtualhere:
     restart: always
-    build: ./usbserver
+    build: ./rpi-virtualhere
     privileged: true
     ports:
       - 75:75
