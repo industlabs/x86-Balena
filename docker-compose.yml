@@ -33,3 +33,9 @@ services:
     privileged: true
     ports:
       - 8080:8080
+  usbserver:
+    restart: always
+    build: ./usbserver
+    privileged: true
+    ports:
+      - 75:75
