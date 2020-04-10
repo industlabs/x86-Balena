@@ -1,5 +1,5 @@
 FROM jgogstad/arm32v7-debian:jessie
-RUN rpi-update
+### RUN rpi-update
 RUN apt-get update && apt-get install -y 
 
 WORKDIR /usr/src/app
