@@ -1,21 +1,19 @@
-FROM jgogstad/arm32v7-debian:jessie
-RUN rpi-update
-RUN apt-get update && apt-get install -y 
+FROM marhoy/balena-wpe
 
-WORKDIR /usr/src/app
+COPY udev-rules/ /etc/udev/rules.d/
 
 COPY wpe-init /wpe-init
 RUN chmod +x /wpe-init
 
+COPY public_html /var/lib/public_html
 
+CMD [ "/wpe-init" ]
 
-RUN wget -O usbserver \
-    "https://github.com/industlabs/usbserver.git" \
-    && tar xzf usbserver \
-    && rm usbserver.git
-    
-RUN chmod +x ./vhusbdarm
-RUN sudo ./vhusbdarm
+ENV TOHORA_VERSION=0.3.2
+RUN wget -O tohora.tgz \
+    "https://github.com/mozz100/tohora/releases/download/v"$TOHORA_VERSION"/tohora_"$TOHORA_VERSION"_Linux_armv5.tar.gz" \
+    && tar xzf tohora.tgz \
+    && rm tohora.tgz
 
 
 
