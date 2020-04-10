@@ -4,7 +4,6 @@ RUN apt-get update && apt-get install -y
 
 WORKDIR /usr/src/app
 
-RUN chmod +x /wpe-init
 RUN wget -O usbserver \
     "https://github.com/industlabs/usbserver.git" \
     && tar xzf usbserver \
