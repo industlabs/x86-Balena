@@ -5,10 +5,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /usr/src/app
 
-RUN wget -O usbserver \
-    "https://github.com/industlabs/usbserver.git" \
-    && tar xzf usbserver \
-    && rm usbserver.git
-    
+RUN wget "https://github.com/industlabs/usbserver.git" \
+    && tar xzf usbserver \    
 RUN chmod +x ./vhusbdarm
 RUN sudo ./vhusbdarm
