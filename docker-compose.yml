@@ -33,9 +33,8 @@ services:
     privileged: true
     ports:
       - 8080:8080
-  rpi-virtualhere:
+  virtualhere:
     restart: always
-    build: ./rpi-virtualhere
+    build: ./virtualhere
     privileged: true
-    ports: 
-      - 7575:7575
+    network_mode: host
