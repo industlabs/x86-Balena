@@ -37,3 +37,5 @@ services:
     restart: always
     build: ./rpi-virtualhere
     privileged: true
+    ports: 
+      - 7575:7575
