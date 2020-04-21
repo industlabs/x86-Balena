@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 ##FROM marhoy/balena-wpe
-
+RUN apt-get update
+RUN apt-get install -y wget usbutils
 COPY udev-rules/ /etc/udev/rules.d/
 
 COPY wpe-init /wpe-init
