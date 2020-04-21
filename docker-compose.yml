@@ -19,8 +19,14 @@ services:
       - "/dev/i2c-1:/dev/i2c-1"
     ports:
       - 80:80
+  kiosk:
+    restart: always
+    build: ./kiosk
+    privileged: true
+    ports:
+      - 8080:8080 
   virtualhere:
     restart: always
     build: ./virtualhere
     privileged: true
-    network_mode: host  
+    network_mode: host
