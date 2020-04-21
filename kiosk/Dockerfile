@@ -1,4 +1,5 @@
-FROM marhoy/balena-wpe
+FROM ubuntu:16.04
+##FROM marhoy/balena-wpe
 
 COPY udev-rules/ /etc/udev/rules.d/
 
