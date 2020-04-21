@@ -1,6 +1,8 @@
 # Runtime image
 ###
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:12-stretch-build as build
+FROM ubuntu:16.04
+
+##FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:12-stretch-build as build
 
 RUN JOBS=MAX npm install -g --production --unsafe-perm \
        node-red \
