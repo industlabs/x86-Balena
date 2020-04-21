@@ -19,8 +19,3 @@ services:
       - "/dev/i2c-1:/dev/i2c-1"
     ports:
       - 80:80
-  #virtualhere:
-  ##  restart: always
-  ##  build: ./virtualhere
-  ##  privileged: true
-  ##  network_mode: host
