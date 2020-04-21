@@ -23,7 +23,8 @@ on_init() {
         
     ## Downloading VirtualHere server for ARM32
     task "Downloading VirtualHere" \
-    &&  curl -o /bin/vhusbd 'https://virtualhere.com/sites/default/files/usbserver/vhusbdarm' \
+    &&  curl -o /bin/vhusbd 'http://www.virtualhere.com/sites/default/files/usbserver/vhusbdx86_64' \
+    ##&&  curl -o /bin/vhusbd 'https://virtualhere.com/sites/default/files/usbserver/vhusbdarm' \
     && chmod +x /bin/vhusbd
 
     task "/INIT"
